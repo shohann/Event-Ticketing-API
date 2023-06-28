@@ -1,7 +1,14 @@
-console.log('test')
+import express from 'express';
+import config from 'config';
+import userRouter from './routes/userRoute';
 
-const config = require('config');
-const port = config.get('port');
+const port =  config.get('port')
+const app = express();
 
+app.use(express.json());
+app.use('/api/users', userRouter);
 
-console.log(port)
+app.listen(port, () => {
+    console.log(`Server started on port: ${port}`);
+});
+
