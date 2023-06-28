@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-
-import { createUserService } from '../services/userService';
+import { userService } from '../services';
 
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const user = await createUserService('shohann', 'shohann@gmail.com', "abc")
+        const user = await userService.createUserService('shohann', 'shohann@gmail.com', "abc")
 
         res.status(201).json({
             success: true,
